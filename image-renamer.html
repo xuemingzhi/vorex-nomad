@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>Image Compressor - Compress Images Without Losing Quality [Free Online Tool]</title>
+    <meta name="description" content="Tired of meaningless filenames? Our Image Renamer tool renames your photos faster than you can say SEO-friendly. Batch rename images with custom patterns, sequential numbers, dates, or suffixes. Supports JPG, PNG, WebP, HEIC, TIFF, GIF, BMP, SVG, PDF.">
+
+    <!-- SEO Meta Tags -->
+    <!-- <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="http://127.0.0.1:8000">
+<link rel="sitemap" title="Sitemap" href="/sitemap.xml" type="application/xml">
+<title>Vorex Tools - Free Online Image Tools</title>
+<meta property="og:title" content="Vorex Tools - Free Online Image Tools">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:url" content="http://127.0.0.1:8000">
+<meta property="og:site_name" content="Vorex Tools">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vorex Tools - Free Online Image Tools">
+ -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="http://127.0.0.1:8000/logo_icon.png" type="image/png">
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tool Specific CSS -->
+    <link href="http://127.0.0.1:8000/css/image-renamer.css" rel="stylesheet">
+<link href="http://127.0.0.1:8000/css/image-renamer-theme.css" rel="stylesheet">
+
+    <style>
+        .version-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0.25rem 0;
+            margin-top: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .version-badge:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .watermark-text {
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 1px;
+            /* text-transform: uppercase; */
+            pointer-events: none;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Theme Alert Component - Load first to ensure it's available when needed -->
+    <div id="themeAlert" style="display: none;">
+    <style>
+        #themeAlert {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            animation: themeAlertFadeIn 0.2s ease-out;
+        }
+        #themeAlertBackdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+        #themeAlertBox {
+            position: relative;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 28rem;
+            width: 100%;
+            overflow: hidden;
+            animation: themeAlertSlideUp 0.3s ease-out;
+        }
+        #themeAlertIcon {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #themeAlertIcon svg {
+            width: 3rem;
+            height: 3rem;
+        }
+        #themeAlertIcon.error { color: #ef4444; }
+        #themeAlertIcon.success { color: #22c55e; }
+        #themeAlertIcon.warning { color: #f59e0b; }
+        #themeAlertIcon.info { color: #3b82f6; }
+        #themeAlertContent {
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+        }
+        #themeAlertTitle {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        #themeAlertMessage {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+        #themeAlertButtonContainer {
+            padding: 0 1.5rem 1.25rem;
+        }
+        #themeAlertButton {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        #themeAlertButton:hover {
+            background: linear-gradient(to right, #0891b2, #2563eb);
+        }
+        @keyframes themeAlertFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes themeAlertSlideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <div id="themeAlertBackdrop"></div>
+    <div id="themeAlertBox">
+        <div id="themeAlertIcon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+        </div>
+        <div id="themeAlertContent">
+            <h3 id="themeAlertTitle">Message</h3>
+            <p id="themeAlertMessage">This is an alert message.</p>
+        </div>
+        <div id="themeAlertButtonContainer">
+            <button id="themeAlertButton">OK</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var alertEl, iconEl, titleEl, messageEl, buttonEl, backdropEl;
+    
+    function resolveElements() {
+        if (alertEl) return true;
+        alertEl = document.getElementById('themeAlert');
+        iconEl = document.getElementById('themeAlertIcon');
+        titleEl = document.getElementById('themeAlertTitle');
+        messageEl = document.getElementById('themeAlertMessage');
+        buttonEl = document.getElementById('themeAlertButton');
+        backdropEl = document.getElementById('themeAlertBackdrop');
+        return alertEl && iconEl && titleEl && messageEl && buttonEl && backdropEl;
+    }
+    
+    var ThemeAlert = {
+        show: function(options) {
+            if (!resolveElements()) {
+                alert(options.message || 'An error occurred');
+                return;
+            }
+            var type = options.type || 'info';
+            iconEl.className = type;
+            var icons = {
+                error: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
+                success: 'M5 13l4 4L19 7',
+                warning: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
+                info: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+            };
+            var pathEl = iconEl.querySelector('svg path');
+            if (pathEl) pathEl.setAttribute('d', icons[type]);
+            titleEl.textContent = options.title || (type === 'error' ? 'Error' : type === 'success' ? 'Success' : type === 'warning' ? 'Warning' : 'Info');
+            messageEl.textContent = options.message || '';
+            buttonEl.textContent = options.buttonText || 'OK';
+            var callback = options.callback || function() {};
+            alertEl.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            buttonEl.onclick = function() { ThemeAlert.hide(callback); };
+            backdropEl.onclick = function() { ThemeAlert.hide(callback); };
+            var escapeHandler = function(e) {
+                if (e.key === 'Escape') {
+                    ThemeAlert.hide(callback);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        },
+        hide: function(callback) {
+            if (alertEl) alertEl.style.display = 'none';
+            document.body.style.overflow = '';
+            if (typeof callback === 'function') setTimeout(callback, 100);
+        },
+        error: function(message, options) { this.show(Object.assign({type: 'error', message: message}, options || {})); },
+        success: function(message, options) { this.show(Object.assign({type: 'success', message: message}, options || {})); },
+        warning: function(message, options) { this.show(Object.assign({type: 'warning', message: message}, options || {})); },
+        info: function(message, options) { this.show(Object.assign({type: 'info', message: message}, options || {})); }
+    };
+    
+    window.ThemeAlert = ThemeAlert;
+})();
+</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7YY35R0F4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-X7YY35R0F4');
+    </script>
+
+    <!-- Header -->
+    <header class="page-header">
+        <!-- Subtle Watermark - Top Left -->
+        <div class="watermark-text">Vorex Nomad</div>
+
+        <!-- Google Auth Button - Top Right -->
+        
+        <!-- Creative Logo Watermark Background -->
+        <div class="watermark-container">
+            <div class="watermark-layer"></div>
+        </div>
+
+        <div class="container">
+            <span class="tool-category">
+                <i class="fas fa-wrench mr-1"></i> Image Converter
+            </span>
+            <h1>Image Renamer: Fix Those Terrible Filenames</h1>
+            <p>Tired of meaningless filenames? Our Image Renamer tool renames your photos faster than you can say SEO-friendly. Batch rename images with custom patterns, sequential numbers, dates, or suffixes. Supports JPG, PNG, WebP, HEIC, TIFF, GIF, BMP, SVG, PDF.</p>
+            <div class="mt-4">
+                <a href="#tool" class="btn btn-primary">
+                    <i class="fas fa-arrow-down mr-2"></i> Get Started
+                </a>
+            </div>
+            <span class="version-badge">v1.0.0-trial</span>
+        </div>
+    </header>
+
+    <!-- Tool Content -->
+    
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="text-center" style="margin-bottom:20px">Why Our Tool is Like a Good Fortune Cookie</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="feature-card">
+                    <i class="fas fa-zap"></i>
+                    <h3>Instant Gratification</h3>
+                    <p>Renaming images faster than you can say "SEO-friendly." No waiting, no uploading—just instant filename magic. Perfect for people who hate waiting... which is basically everyone.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Batch Mode: Lazy Mode</h3>
+                    <p>Why rename one photo when you can rename 30 at once? It's like ordering takeout for the whole family—efficient, satisfying, and zero judgment if you do it in your pajamas.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Privacy First (We Promise)</h3>
+                    <p>Your images never leave your computer. We're not in the business of stealing vacation photos—we're in the business of making them easier to find. Promise.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Date-Based Naming</h3>
+                    <p>Automatically add dates to your filenames. Perfect for organizing photos by when you took them, not by whatever random number your camera decided to assign.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-card">
+                    <i class="fas fa-hashtag"></i>
+                    <h3>Sequential Numbering</h3>
+                    <p>Add sequential numbers like a pro. Your photos will finally have the order they deserve—no more IMG_001, IMG_002 chaos.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>One-Click Download</h3>
+                    <p>Zip it, download it, done. Your renamed photos will be ready to go faster than you can say "where did I put that USB drive?"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tool Section -->
+<section id="tool" class="py-8">
+    <div class="container max-w-4xl">
+        <div class="card">
+            <div class="card-body p-8" style="padding: 20px">
+                <h2 class="text-2xl font-bold mb-8">Let's Give Those Photos Some Dignity</h2>
+
+                <div class="mb-8">
+                    <label class="form-label mb-4 text-lg font-medium text-white">Select Image Files</label>
+                    <div class="file-upload-wrapper">
+    <div class="upload-container" id="upload-image-renamer">
+        <div class="upload-content" id="upload-content-image-renamer">
+            <div class="upload-icon-wrapper">
+                <svg class="upload-icon" id="upload-icon-image-renamer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 16V8M12 8L9 11M12 8L15 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 15V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="upload-text">
+                <p class="upload-title" id="upload-title-image-renamer">Drag and Drop / Paste (Ctrl+V)</p>
+                <p class="upload-subtitle" id="upload-subtitle-image-renamer">Supported: JPG, PNG, WebP, HEIC, TIFF, GIF, BMP, SVG (Max 30 files)</p>
+            </div>
+            <span class="upload-btn" id="upload-btn-image-renamer">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21H3C1.89543 21 1 20.1046 1 19V5C1 3.89543 1.89543 3 3 3H21C22.1046 3 23 3.89543 23 5V19C23 20.1046 22.1046 21 21 21Z" stroke="currentColor" stroke-width="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+                    <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Browse files
+            </span>
+        </div>
+        <input
+            type="file"
+            id="file-input-image-renamer"
+            class="file-input"
+            accept="image/*"
+             multiple >
+    </div>
+
+    <div class="file-list " id="file-list-image-renamer" style="display: none;">
+        <!-- 自定义头部插槽 -->
+                <div class="file-list-header">
+            <span class="file-list-title">Selected Files</span>
+            <span class="file-list-count" id="file-list-count-image-renamer">0 files</span>
+        </div>
+        
+        <!-- File count limit hint -->
+                <div class="file-list-limit" id="file-list-limit-image-renamer">
+            Max 30 files allowed
+        </div>
+        
+        <div class="file-list-items" id="file-list-items-image-renamer"></div>
+
+        <!-- Custom footer slot -->
+        
+        <!-- Custom content slot -->
+            </div>
+
+        <div class="privacy-note">
+        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2" />
+            <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <span>Your images are never uploaded to any server</span>
+    </div>
+    </div>
+
+<style>
+    .file-upload-wrapper {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .upload-container {
+        position: relative;
+        border: 2px dashed #2d3748;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #1a202c 0%, #0d1117 100%);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .upload-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .upload-container:hover {
+        border-color: #6366f1;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+    }
+
+    .upload-container:hover .upload-icon {
+        transform: translateY(-3px);
+        color: #818cf8;
+    }
+
+    .upload-container.drag-over {
+        border-color: #6366f1;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.25);
+        transform: scale(1.01);
+    }
+
+    .upload-container.drag-over .upload-icon {
+        transform: translateY(-5px) scale(1.1);
+        color: #a5b4fc;
+    }
+
+    .upload-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5rem 1.5rem;
+        position: relative;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .upload-icon-wrapper {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .upload-icon {
+        width: 48px;
+        height: 48px;
+        color: #6366f1;
+        transition: all 0.3s ease;
+    }
+
+    .upload-text {
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .upload-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #f1f5f9;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .upload-subtitle {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin: 0;
+    }
+
+    .upload-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #fff;
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        pointer-events: auto;
+    }
+
+    .upload-btn:hover {
+        background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .file-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .privacy-note {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        font-size: 0.8125rem;
+        color: #64748b;
+    }
+
+    .lock-icon {
+        width: 14px;
+        height: 14px;
+        color: #10b981;
+    }
+
+    /* File List Styles */
+    .file-list {
+        margin-top: 1rem;
+        border: 1px solid #374151;
+        border-radius: 10px;
+        background: #1f2937;
+        overflow: hidden;
+    }
+
+    .file-list-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background: #374151;
+        border-bottom: 1px solid #4b5563;
+    }
+
+    .file-list-header-custom {
+        padding: 0.75rem 1rem;
+        background: #374151;
+        border-bottom: 1px solid #4b5563;
+    }
+
+    .file-list-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #f1f5f9;
+    }
+
+    .file-list-count {
+        font-size: 0.75rem;
+        color: #9ca3af;
+    }
+
+    .file-list-limit {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        color: #f59e0b;
+        background: rgba(245, 158, 11, 0.1);
+        border-bottom: 1px solid #4b5563;
+    }
+
+    .file-list-items {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .file-list-footer {
+        padding: 0.75rem 1rem;
+        background: #374151;
+        border-top: 1px solid #4b5563;
+    }
+
+    .file-list-custom {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Default file item layout */
+    .file-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #374151;
+        transition: background 0.15s ease;
+    }
+
+    .file-item:last-child {
+        border-bottom: none;
+    }
+
+    .file-item:hover {
+        background: #374151;
+    }
+
+    .file-item-thumb {
+        width: 44px;
+        height: 44px;
+        border-radius: 6px;
+        border: 1px solid #4b5563;
+        object-fit: cover;
+        background: #1a202c;
+        flex-shrink: 0;
+    }
+
+    .file-item-thumb-placeholder {
+        width: 44px;
+        height: 44px;
+        border-radius: 6px;
+        border: 1px solid #4b5563;
+        background: #1a202c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .file-item-thumb-placeholder svg {
+        width: 20px;
+        height: 20px;
+        color: #6b7280;
+    }
+
+    .file-item-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .file-item-name {
+        font-size: 0.875rem;
+        color: #f1f5f9;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.125rem;
+    }
+
+    .file-item-meta {
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+
+    .file-item-remove {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        color: #6b7280;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        flex-shrink: 0;
+    }
+
+    .file-item-remove:hover {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .file-item-remove svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Selected state */
+    .upload-container.selected {
+        border-color: #10b981;
+        border-style: solid;
+    }
+
+    .upload-container.selected .upload-icon {
+        color: #10b981;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+        .upload-content {
+            padding: 2rem 1rem;
+        }
+
+        .upload-icon-wrapper {
+            width: 56px;
+            height: 56px;
+        }
+
+        .upload-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .upload-title {
+            font-size: 1rem;
+        }
+
+        .file-item {
+            padding: 0.625rem 0.75rem;
+        }
+
+        .file-item-thumb,
+        .file-item-thumb-placeholder {
+            width: 36px;
+            height: 36px;
+        }
+    }
+</style>
+
+<script>
+    (function() {
+        var uploadId = 'image-renamer';
+        var maxFiles = parseInt('30') || 0;
+        var uploadContainer = document.getElementById('upload-' + uploadId);
+        var uploadContent = document.getElementById('upload-content-' + uploadId);
+        var fileList = document.getElementById('file-list-' + uploadId);
+        var fileListItems = document.getElementById('file-list-items-' + uploadId);
+        var fileListCount = document.getElementById('file-list-count-' + uploadId);
+
+        if (!uploadContainer) {
+            console.error('File upload component not found:', uploadId);
+            return;
+        }
+
+        var currentFiles = [];
+        var fileInput = document.getElementById('file-input-' + uploadId);
+
+        uploadContainer.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('drag-over');
+        });
+
+        uploadContainer.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+        });
+
+        uploadContainer.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+
+            if (e.dataTransfer.files.length > 0) {
+                var files = Array.from(e.dataTransfer.files);
+                if (maxFiles > 0) {
+                    var remaining = maxFiles - currentFiles.length;
+                    files = files.slice(0, remaining);
+                }
+                addFiles(files);
+            }
+        });
+
+        fileInput.addEventListener('change', function(e) {
+            e.stopPropagation();
+
+            var newFiles = [];
+            for (var i = 0; i < this.files.length; i++) {
+                newFiles.push(this.files[i]);
+            }
+
+            if (maxFiles > 0) {
+                var remaining = maxFiles - currentFiles.length;
+                newFiles = newFiles.slice(0, remaining);
+            }
+
+            if (newFiles.length > 0) {
+                addFiles(newFiles);
+            }
+
+            this.value = '';
+        });
+
+        function addFiles(newFiles) {
+            for (var i = 0; i < newFiles.length; i++) {
+                // 检查是否超过限制
+                if (maxFiles > 0 && currentFiles.length >= maxFiles) {
+                    break;
+                }
+                currentFiles.push(newFiles[i]);
+            }
+            updatePreview();
+            triggerChange();
+        }
+
+        function removeFile(index) {
+            currentFiles.splice(index, 1);
+            updatePreview();
+            triggerChange();
+        }
+
+        function updatePreview() {
+            if (currentFiles.length === 0) {
+                fileList.style.display = 'none';
+                uploadContainer.classList.remove('selected');
+                return;
+            }
+
+            uploadContainer.classList.add('selected');
+            fileList.style.display = 'block';
+            fileListCount.textContent = currentFiles.length + ' files';
+
+            fileListItems.innerHTML = '';
+
+            currentFiles.forEach(function(file, index) {
+                var item = document.createElement('div');
+                item.className = 'file-item';
+
+                var thumbContainer;
+                if (file.type.startsWith('image/')) {
+                    var thumb = document.createElement('img');
+                    thumb.className = 'file-item-thumb';
+                    thumb.alt = file.name;
+
+                    var reader = new FileReader();
+                    reader.onload = (function(t) {
+                        return function(e) {
+                            t.src = e.target.result;
+                        };
+                    })(thumb);
+                    reader.readAsDataURL(file);
+
+                    thumbContainer = thumb;
+                } else {
+                    var placeholder = document.createElement('div');
+                    placeholder.className = 'file-item-thumb-placeholder';
+                    placeholder.innerHTML = '<svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="2"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2"/></svg>';
+                    thumbContainer = placeholder;
+                }
+                item.appendChild(thumbContainer);
+
+                var info = document.createElement('div');
+                info.className = 'file-item-info';
+
+                var name = document.createElement('div');
+                name.className = 'file-item-name';
+                name.textContent = file.name;
+                name.title = file.name;
+                info.appendChild(name);
+
+                var meta = document.createElement('div');
+                meta.className = 'file-item-meta';
+                meta.textContent = formatFileSize(file.size);
+                info.appendChild(meta);
+
+                item.appendChild(info);
+
+                var removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'file-item-remove';
+                removeBtn.title = 'Remove file';
+                removeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+                removeBtn.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    removeFile(index);
+                };
+                item.appendChild(removeBtn);
+
+                fileListItems.appendChild(item);
+            });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            var k = 1024;
+            var sizes = ['B', 'KB', 'MB', 'GB'];
+            var i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        function triggerChange() {
+            uploadContainer.dispatchEvent(new CustomEvent('file-upload-change', {
+                detail: {
+                    files: currentFiles.slice(),
+                    componentId: uploadId
+                },
+                bubbles: true
+            }));
+        }
+
+        window['fileUpload' + uploadId] = {
+            addFiles: addFiles,
+            removeFile: removeFile,
+            getFiles: function() {
+                return currentFiles.slice();
+            },
+            clear: function() {
+                currentFiles = [];
+                updatePreview();
+                triggerChange();
+            }
+        };
+    })();
+</script>                </div>
+
+                <!-- Pattern Options -->
+                <div class="pattern-options">
+                    <h4><i class="fas fa-palette mr-2"></i> Rename Mode</h4>
+
+                    <div class="mb-4">
+                        <select id="rename-mode" class="form-control">
+                            <option value="custom">Custom - Individual</option>
+                            <option value="sequential">Sequential - Numbers</option>
+                            <option value="date">Date - Date-based</option>
+                            <option value="suffix">Original + Suffix</option>
+                        </select>
+                    </div>
+
+                    <!-- Mode: Sequential - Numbers -->
+                    <div id="mode-sequential" class="mode-options" style="display: none;">
+                        <h4><i class="fas fa-edit mr-2"></i> Base Name</h4>
+                        <input type="text" id="sequential-base" class="form-control mb-3" placeholder="e.g., product-photo">
+                        <div class="counter-options">
+                            <div>
+                                <label>Start:</label>
+                                <input type="number" id="start-number" value="1" min="1">
+                            </div>
+                            <div>
+                                <label>Digits:</label>
+                                <select id="digits-format">
+                                    <option value="1">1, 2, 3...</option>
+                                    <option value="2">01, 02, 03...</option>
+                                    <option value="3">001, 002, 003...</option>
+                                    <option value="4">0001, 0002, 0003...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mode: Date - Date-based -->
+                    <div id="mode-date" class="mode-options" style="display: none;">
+                        <h4><i class="fas fa-edit mr-2"></i> Base Name</h4>
+                        <input type="text" id="date-base" class="form-control mb-3" placeholder="e.g., test">
+                        <div class="counter-options">
+                            <div>
+                                <label>Start:</label>
+                                <input type="number" id="date-start-number" value="1" min="1">
+                            </div>
+                            <div>
+                                <label>Digits:</label>
+                                <select id="date-digits-format">
+                                    <option value="1">1, 2, 3...</option>
+                                    <option value="2">01, 02, 03...</option>
+                                    <option value="3">001, 002, 003...</option>
+                                    <option value="4">0001, 0002, 0003...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mode: Original + Suffix -->
+                    <div id="mode-suffix" class="mode-options" style="display: none;">
+                        <h4><i class="fas fa-edit mr-2"></i> Suffix</h4>
+                        <input type="text" id="suffix-input" class="form-control mb-3" placeholder="e.g., translated, backup, v2">
+                    </div>
+
+                    <div class="preview-box mt-4">
+                        <div class="label">Preview:</div>
+                        <div class="preview-text" id="pattern-preview">my-image-01.jpg</div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap mt-8">
+                    <button type="button" id="rename-btn" class="btn btn-primary btn-lg" disabled>
+                        <i class="fas fa-magic mr-2"></i> Rename All Images
+                    </button>
+                    <button type="button" id="download-btn" class="btn btn-success btn-lg" disabled>
+                        <i class="fas fa-download mr-2"></i> Download All as ZIP
+                    </button>
+                    <button type="button" id="clear-btn" class="btn btn-outline-custom btn-lg">
+                        <i class="fas fa-trash mr-2"></i> Clear All
+                    </button>
+                </div>
+
+                <!-- Custom Extended File List for Image Renamer -->
+                <div id="renamer-file-list" class="renamer-file-list mt-6" style="display: none;">
+                    <div class="renamer-list-header">
+                        <span class="renamer-list-title">Selected Files</span>
+                        <span class="renamer-list-count" id="renamer-file-count">0 files</span>
+                    </div>
+                    <div class="renamer-list-items" id="renamer-file-items">
+                        <!-- Custom file items will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container max-w-3xl">
+        <h2 class="text-center mb-8" style="margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                        Is this tool really free?
+                    </button>
+                </h3>
+                <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! You get 10 free uses to test it out. After that, you can upgrade to our Basic Membership for unlimited access. We believe in letting you try before you buy—no credit card required.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                        Do you store my images?
+                    </button>
+                </h3>
+                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Absolutely not. All processing happens in your browser. Your images never leave your computer—we're not in the photo storage business, just the photo renaming business.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                        What file formats are supported?
+                    </button>
+                </h3>
+                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We support JPG, PNG, WebP, HEIC, TIFF, GIF, BMP, SVG, and PDF files. You can upload up to 30 files at a time—perfect for batch processing those vacation photos or product images.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                        Can I use this on my phone?
+                    </button>
+                </h3>
+                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! Our tool is fully responsive and works on mobile devices. Just tap to select photos from your camera roll and rename them on the go. Perfect for those "I need to rename these photos right now" moments.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <!-- Footer Component -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="http://127.0.0.1:8000/logo_icon.png" alt="Vorex Tools" class="logo-img">
+                    <span class="logo-text">Vorex Tools</span>
+                </div>
+                <p class="footer-description">
+                    Simple, powerful tools for all your image needs.
+                </p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">
+                    © 2026 Vorex Tools. All rights reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- Tool Specific Scripts -->
+    <script src="http://127.0.0.1:8000/js/image-renamer.js"></script>
+</body>
+
+</html>
